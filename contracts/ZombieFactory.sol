@@ -25,6 +25,7 @@ contract ZombieFactory {
   }
 
   function createRandomZombie(string _name) public {
+    require(keccak256(_name) != keccak256(""));
     uint randDna = _generateRandomDna(_name);
     _createZombie(_name, randDna);
   }
