@@ -11,12 +11,13 @@
     "babel-register": "^6.26.0",
     "node-inspect": "^1.11.3",
     "truffle": "^4.1.13",
-    "web3": "^0.20.1",
     "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1"
+    "chai-as-promised": "^7.1.1",
+    "sol-trace": "nakajo2011/sol-trace#pre/eth_call_stack_trace",
+    "ganache-cli": "6.1.6"
   },
   "scripts": {
-    "test": "rm -rf build && truffle test",
-    "test:inspect": "rm -rf build && node inspect $(npm bin)/truffle test"
+    "test": "rm -rf build && truffle compile && truffle test --network live",
+    "test:inspect": "rm -rf build && truffle compile && node inspect $(npm bin)/truffle test"
   }
 }

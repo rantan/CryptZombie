@@ -1,5 +1,8 @@
 const ZombieFactory = artifacts.require('./ZombieFactory.sol');
 
+import { injectInTruffle } from 'sol-trace';
+injectInTruffle(web3, artifacts);
+
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 
@@ -17,7 +20,7 @@ contract('ZombieFactory', () => {
 
   describe('createRandomZombie', () => {
     it('should creat Zombie', async () => {
-      const response = await instance.createRandomZombie('MyZombie').valueOf();
+      const response = await instance.createRandomZombie('').valueOf();
 
       assert.equal(response.logs[0]['event'], 'NewZombie');
       assert.equal(response.logs[0]['args']['name'], 'MyZombie');
