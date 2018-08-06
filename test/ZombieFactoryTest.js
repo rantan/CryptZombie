@@ -1,5 +1,3 @@
-const ZombieFactory = artifacts.require('./ZombieFactory.sol');
-
 import { injectInTruffle } from 'sol-trace';
 injectInTruffle(web3, artifacts);
 
@@ -11,6 +9,8 @@ const assert = chai.assert;
 
 const VMError = 'VM Exception while processing transaction: revert';
 
+const ZombieFactory = artifacts.require('./ZombieFactory.sol');
+
 contract('ZombieFactory', () => {
   let instance;
 
@@ -20,7 +20,7 @@ contract('ZombieFactory', () => {
 
   describe('createRandomZombie', () => {
     it('should creat Zombie', async () => {
-      const response = await instance.createRandomZombie('').valueOf();
+      const response = await instance.createRandomZombie('MyZombie').valueOf();
 
       assert.equal(response.logs[0]['event'], 'NewZombie');
       assert.equal(response.logs[0]['args']['name'], 'MyZombie');
